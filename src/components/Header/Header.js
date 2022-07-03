@@ -47,9 +47,10 @@ const Logo = styled.div`
     border-radius: 5px;
     color: #fff;
     text-transform: uppercase;
+    transition: .3s;
 
-    &:hover {
-
+    &:hover{
+        box-shadow: 1px 0.5px 5px #222;
     }
 
     @media (max-width: 700px) {
