@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-import { fetchRandomAPI } from "../../utils/utils";
+import { useSelector } from "react-redux";
+import { selectRandomApi, fetchRandom, isLoading } from "../../features/apiSlice";
+import { useDispatch } from 'react-redux';
 
 const Container = styled.section`
     display: flex;
@@ -121,17 +121,12 @@ const ButtonContainer = styled.button`
 `;
 
 export const APIOfTheDay = () => {
-    const [api, setApi] = useState([]);
-    const [loaded, setLoaded] = useState(false);
+    const dispatch = useDispatch();
+    const api = useSelector(selectRandomApi);
+    const loading = useSelector(isLoading);
 
     useEffect(() => {
-        if(!loaded) {
-            fetchRandomAPI().then(res => {
-                console.log(res.entries[0]);
-                setApi(res.entries[0]);
-                setLoaded(true);
-            });
-        }
+        dispatch(fetchRandom());
     }, []);
 
     return (
@@ -141,11 +136,13 @@ export const APIOfTheDay = () => {
                 <StyledDate>Date: {new Date().toLocaleDateString()}</StyledDate>
             </Row>
             <Column>
-                {api.API && <APITitle>{api.API}</APITitle>}
-                {<APIDescription>{api.Description}</APIDescription>}
-                <StyledLink href={api.Link} target='_blank'>
-                    <ButtonContainer>See More</ButtonContainer>
-                </StyledLink>
+                {loading ? 'Loading...' : <APITitle>{api.API}</APITitle>}
+                {!loading && <APIDescription>{api.Description}</APIDescription>}
+                {!loading && 
+                    <StyledLink href={api.Link} target='_blank'>
+                        <ButtonContainer>See More</ButtonContainer>
+                    </StyledLink>
+                }
             </Column>
         </Container>
     )
