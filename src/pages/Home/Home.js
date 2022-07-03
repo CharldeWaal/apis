@@ -7,7 +7,14 @@ import { APIOfTheDay } from "../../components/APIOfTheDay/APIOfTheDay";
 const HomePage = styled.main`
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px - 28px);
+    align-items: center;
+    justify-content: center;
+`;
+
+const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 `;
@@ -57,20 +64,56 @@ const LinksContainer = styled.div`
     justify-content: center;
 `;
 
+const ButtonContainer = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    background-color: #fff;
+    color: #48434f;
+    border: 1px solid #48434f;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .10em;
+    line-height: 1.16667;
+    text-decoration: none;
+    width: 220px;
+    text-align: center;
+    height: 39px;
+    padding: 0 28px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: .2s;
+    -webkit-font-smoothing: antialiased;
+
+    &:hover{
+        background-color: #48434f;
+        color: #fff;
+    }
+`;
+
 const StyledLink = styled(Link)`
     margin: 4px 8px;
+    text-decoration: none;
 `;
 
 export const Home = () => {
     return (
         <HomePage>
-            <Logo>PUBLIC APIs</Logo>
-            <Title>Welcome to Public APIs</Title>
-            <Paragraph>A collective list of free APIs for use in software and web development</Paragraph>
-            <LinksContainer>
-                <StyledLink to='/apis'>View All APIs</StyledLink>
-                <StyledLink to='/categories'>Categories</StyledLink>
-            </LinksContainer>
+            <TextContainer>
+                <Logo>PUBLIC APIs</Logo>
+                <Title>Welcome to Public APIs</Title>
+                <Paragraph>A collective list of free APIs for use in software and web development</Paragraph>
+                <LinksContainer>
+                    <StyledLink to='/apis'>
+                        <ButtonContainer>VIEW ALL APIs</ButtonContainer>
+                    </StyledLink>
+                    <StyledLink to='/categories'>
+                        <ButtonContainer>CATEGORIES</ButtonContainer>
+                    </StyledLink>
+                </LinksContainer>
+            </TextContainer>
             <APIOfTheDay/>
         </HomePage>
     )
