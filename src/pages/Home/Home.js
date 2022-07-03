@@ -1,5 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import { APIOfTheDay } from "../../components/APIOfTheDay/APIOfTheDay";
 
 const HomePage = styled.main`
     display: flex;
@@ -36,6 +39,7 @@ const Logo = styled.div`
     width: 64px;
     padding: 12px 12px;
     border-radius: 50%;
+    margin-bottom: 16px;
 
     font-family: 'Inter';
     font-size: 16px;
@@ -47,12 +51,27 @@ const Logo = styled.div`
     transition: .3s;
 `;
 
+const LinksContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const StyledLink = styled(Link)`
+    margin: 4px 8px;
+`;
+
 export const Home = () => {
     return (
         <HomePage>
             <Logo>PUBLIC APIs</Logo>
             <Title>Welcome to Public APIs</Title>
             <Paragraph>A collective list of free APIs for use in software and web development</Paragraph>
+            <LinksContainer>
+                <StyledLink to='/apis'>View All APIs</StyledLink>
+                <StyledLink to='/categories'>Categories</StyledLink>
+            </LinksContainer>
+            <APIOfTheDay/>
         </HomePage>
     )
 };
