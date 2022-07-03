@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 
+//import redux selectors, dispatch
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories, isLoading, selectCategories } from "../../features/apiSlice";
+
 import { Tile } from "../../components/Tile/Tile";
-import { fetchAPICategories } from "../../utils/utils";
 
 const CategoryPageContainer = styled.main`
     height: calc(100vh - 70px);
@@ -20,19 +23,18 @@ const CategoriesFlex = styled.section`
 `;
 
 export const CategoriesPage = () => {
-    const [categories, setCategories] = useState([]);
+    const dispatch = useDispatch();
+    const categories = useSelector(selectCategories);
+    const loading = useSelector(isLoading);
 
     useEffect(() => {
-        fetchAPICategories().then((res) => {
-            console.log(res);
-            setCategories(res.categories);
-        })
+        dispatch(fetchCategories());
     }, [])
 
     return (
         <CategoryPageContainer>
             <CategoriesFlex>
-                {categories.length > 0 &&
+                {loading ? 'Loading...' :
                 categories.map((data, index) => {
                     return (
                         <Tile key={index} title={data}></Tile> 
