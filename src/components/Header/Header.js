@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import logo from '../../../src/apiLogo.png';
 
 const NavBarContainer = styled.nav`
     display: flex;
@@ -46,7 +45,6 @@ const Logo = styled.div`
     background-color: #48434f;
     border-radius: 5px;
     color: #fff;
-    text-transform: uppercase;
     transition: .3s;
 
     &:hover{
@@ -67,7 +65,6 @@ const LogoLink = styled(NavLink)`
 `;
 
 const NavbarLink = styled(NavLink)`
-    text-transform: uppercase;
     color: #48434f;
     font-family: 'Inter';
     font-size: 12px;
@@ -87,15 +84,15 @@ const NavbarLink = styled(NavLink)`
     cursor: pointer;
 
     &:hover {
-        color: #fc0;
+        opacity: 0.5;
     }
 
     &:active {
-        color: #fc0;
+        opacity: 0.5;
     }
 
     &:focus {
-        color: #fc0;
+        opacity: 0.5;
     }
 
     @media (max-width: 700px) {
@@ -108,11 +105,11 @@ export const Header = () => {
         <NavBarContainer>
             <LeftInnerContainer>
                 <LogoLink to='/'>
-                    <Logo>Public Apis</Logo>
+                    <Logo>PUBLIC APIs</Logo>
                 </LogoLink>
-                <NavbarLink to='/apis'>All Apis</NavbarLink>
-                <NavbarLink to='/categories'>Categories</NavbarLink>
-                <NavbarLink to='/daily-api'>Api of the day</NavbarLink>
+                <NavbarLink to='/apis'>ALL APIs</NavbarLink>
+                <NavbarLink to='/categories'>CATEGORIES</NavbarLink>
+                <NavbarLink to='/random-api'>RANDOM API</NavbarLink>
             </LeftInnerContainer>
             <RightInnerContainer>
 
