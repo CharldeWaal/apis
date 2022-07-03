@@ -2,17 +2,13 @@ import React from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-import { Button } from "../Button/Button";
-
 const TileElement = styled.div`
-    flex: 1 1 10%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 16px;
-    margin-right: 16px;
-    height: 280px;
+    margin: 16px 16px;
+    height: 80px;
+    width: 160px;
     padding: 16px;
     background-color: #fff;
     border-radius: 5px;
@@ -40,30 +36,15 @@ const Paragraph = styled.p`
     margin-bottom: 10px;
 `;
 
-const IconDiv = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    margin: 16px;
-    box-shadow: 1px 0.5px 5px #888888;
-    color: #003e6e;
-`;
-
 const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-export const Tile = ({ title, description, link }) => {
+export const Tile = ({ title, description }) => {
     return (
         <TileElement>
             <Header>{title}</Header>
             <Paragraph>{description}</Paragraph>
-            <StyledLink to={link}>
-                <Button text='See More' type="button"/>
-            </StyledLink>
         </TileElement>
     )
 };
