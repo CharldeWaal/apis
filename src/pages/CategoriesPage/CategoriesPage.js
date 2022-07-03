@@ -25,17 +25,17 @@ export const CategoriesPage = () => {
     useEffect(() => {
         fetchAPICategories().then((res) => {
             console.log(res);
-            setCategories(res);
+            setCategories(res.categories);
         })
     }, [])
 
     return (
         <CategoryPageContainer>
             <CategoriesFlex>
-                {categories.categories &&
-                categories.categories.map((data) => {
+                {categories.length > 0 &&
+                categories.map((data, index) => {
                     return (
-                        <Tile key={data.id} title={data}></Tile> 
+                        <Tile key={index} title={data}></Tile> 
                     )
                 })}
             </CategoriesFlex>
