@@ -69,6 +69,7 @@ export const apiSlice = createSlice({
 
 export const selectAllAPIs = (state) => state.api.allApis;
 export const selectRandomApi = (state) => state.api.randomApi;
+export const selectDailyApi = (state) => state.api.dailyApi;
 export const selectCategories = (state) => state.api.categories;
 export const isDailyFetched = (state) => state.api.dailyfetched;
 export const isLoading = (state) => state.api.isLoading;
