@@ -12,6 +12,7 @@ const FooterContainer = styled.section`
     justify-content: center;
     background-color: #fff;
     z-index: 2;
+    box-sizing: border-box;
 `;
 
 const Text = styled.h4`
@@ -21,6 +22,7 @@ const Text = styled.h4`
     line-height: 1.667;
     letter-spacing: .1em;
     color: #48434f;
+    text-align: center;
 `;
 
 const StyledLink = styled.a`
