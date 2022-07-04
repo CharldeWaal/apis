@@ -6,6 +6,11 @@ export const fetchRandom = createAsyncThunk('api/fetchRandom', async () => {
     return res.entries[0];
 });
 
+export const fetchDaily = createAsyncThunk('api/fetchDaily', async () => {
+    const res = await fetchRandomAPI();
+    return res.entries[0];
+});
+
 export const fetchCategories = createAsyncThunk('api/fetchCategories', async () => {
     const res = await fetchAPICategories();
     return res.categories;
@@ -20,7 +25,9 @@ const initialState = {
     allApis: [],
     categories: [],
     randomApi: [],
-    isLoading: false
+    dailyApi: [],
+    isLoading: false,
+    dailyfetched: false,
 };
 
 export const apiSlice = createSlice({
@@ -28,8 +35,15 @@ export const apiSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchCategories.pending]: (state) => {
+        [fetchAll.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchAll.fulfilled]: (state, action) => {
             state.isLoading = false;
+            state.allApis = action.payload;
+        },
+        [fetchCategories.pending]: (state) => {
+            state.isLoading = true;
         },
         [fetchCategories.fulfilled]: (state, action) => {
             state.isLoading = false;
@@ -41,11 +55,21 @@ export const apiSlice = createSlice({
         [fetchRandom.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.randomApi = action.payload;
+        },
+        [fetchDaily.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchDaily.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.dailyfetched = true;
+            state.dailyApi = action.payload;
         }
     }
 });
 
+export const selectAllAPIs = (state) => state.api.allApis;
 export const selectRandomApi = (state) => state.api.randomApi;
 export const selectCategories = (state) => state.api.categories;
+export const isDailyFetched = (state) => state.api.dailyfetched;
 export const isLoading = (state) => state.api.isLoading;
 export default apiSlice.reducer; 

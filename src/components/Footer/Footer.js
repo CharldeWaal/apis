@@ -11,6 +11,7 @@ const FooterContainer = styled.section`
     align-items: center;
     justify-content: center;
     background-color: #fff;
+    z-index: 2;
 `;
 
 const Text = styled.h4`
