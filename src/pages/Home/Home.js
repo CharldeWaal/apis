@@ -7,9 +7,10 @@ import { APIOfTheDay } from "../../components/APIOfTheDay/APIOfTheDay";
 const HomePage = styled.main`
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px - 28px);
+    height: calc(100vh - 70px - 44px);
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 `;
 
 const TextContainer = styled.div`
@@ -28,14 +29,24 @@ const Title = styled.h1`
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 4px;
+
+    @media (max-width: 640px) {
+        font-size: 16px;
+    }
 `;
 
 const Paragraph = styled.p`
     font-family: 'Inter', sans-serif;
     line-height: 1.667;
     letter-spacing: .02em;
+    text-align: center;
     color: #48434f;
     margin: 4px 0px;
+
+    @media (max-width: 640px) {
+        font-size: 14px;
+        padding: 0px 48px;
+    }
 `;
 
 const Logo = styled.div`
@@ -90,6 +101,10 @@ const ButtonContainer = styled.button`
     &:hover{
         background-color: #48434f;
         color: #fff;
+    }
+
+    @media (max-width: 640px) {
+        width: 160px;
     }
 `;
 
