@@ -8,15 +8,15 @@ import { fetchCategories, isLoading, selectCategories } from "../../features/api
 import { Tile } from "../../components/Tile/Tile";
 
 const CategoryPageContainer = styled.main`
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px - 28px);
     width: 100vw;
+    overflow-y: scroll;
 `;
 
 const CategoriesFlex = styled.section`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: calc(100vh - 70px);
     align-items: flex-start;
     justify-content: center;
     padding-top: 6px;
