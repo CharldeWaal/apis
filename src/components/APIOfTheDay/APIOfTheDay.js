@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { selectRandomApi, fetchRandom, isLoading } from "../../features/apiSlice";
+import { selectDailyApi, fetchDaily, isLoading, isDailyFetched } from "../../features/apiSlice";
 import { useDispatch } from 'react-redux';
 
 const Container = styled.section`
@@ -122,11 +122,14 @@ const ButtonContainer = styled.button`
 
 export const APIOfTheDay = () => {
     const dispatch = useDispatch();
-    const api = useSelector(selectRandomApi);
+    const api = useSelector(selectDailyApi);
     const loading = useSelector(isLoading);
+    const isFetched = useSelector(isDailyFetched);
 
     useEffect(() => {
-        dispatch(fetchRandom());
+        if(!isFetched) {
+            dispatch(fetchDaily());
+        }
     }, []);
 
     return (
