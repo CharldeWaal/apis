@@ -5,7 +5,7 @@ import { GenerateAPI } from "../../components/GenerateAPI/GenerateAPI";
 
 const RandomAPIContainer = styled.main`
     display: flex;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px - 28px);
     width: 100vw;
     align-items: center;
     justify-content: center;
