@@ -18,6 +18,11 @@ const Container = styled.section`
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 1px 0.5px 5px #888888;
+
+    @media (max-width: 700px) {
+        height: 240px;
+        width: 320px;
+    }
 `;
 
 const Row = styled.div`
@@ -46,6 +51,10 @@ const Title = styled.h1`
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 4px;
+
+    @media (max-width: 700px) {
+        font-size: 14px;
+    }
 `;
 
 const StyledDate = styled.h1`
@@ -59,6 +68,10 @@ const StyledDate = styled.h1`
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 4px;
+
+    @media (max-width: 700px) {
+        font-size: 14px;
+    }
 `;
 
 const APITitle = styled.h2`
@@ -71,6 +84,10 @@ const APITitle = styled.h2`
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 4px;
+
+    @media (max-width: 700px) {
+        font-size: 18px;
+    }
 `;
 
 const APIDescription = styled.h2`
@@ -79,11 +96,16 @@ const APIDescription = styled.h2`
     font-family: 'Inter', sans-serif;
     line-height: 1.667;
     letter-spacing: .1em;
+    text-align: center;
     color: #48434f;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 4px;
+
+    @media (max-width: 700px) {
+        font-size: 14px;
+    }
 `;
 
 const StyledLink = styled.a`
