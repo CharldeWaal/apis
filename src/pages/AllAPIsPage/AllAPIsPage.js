@@ -9,7 +9,9 @@ const Container = styled.section`
     display: flex;
     width: 100%;
     height: calc(100vh - 70px - 28px);
-    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: auto;
+    justify-content: flex-start;
     align-items: flex-start;
 `;
 
@@ -18,6 +20,7 @@ const Loading = styled.div`
 `;
 
 const StyledTable = styled.table`
+    padding: 16px;
     border: 1px solid #48434f;
     border-collapse: collapse;
 `;
