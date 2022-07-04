@@ -82,6 +82,7 @@ const APIDescription = styled.h2`
     line-height: 1.667;
     letter-spacing: .1em;
     color: #48434f;
+    text-align: center;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
