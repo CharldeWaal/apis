@@ -5,6 +5,18 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAll, isLoading, selectAllAPIs } from "../../features/apiSlice";
 
+const Container = styled.section`
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 70px - 28px);
+    justify-content: center;
+    align-items: flex-start;
+`;
+
+const Loading = styled.div`
+    margin: auto;
+`;
+
 const StyledTable = styled.table`
     border: 1px solid #48434f;
     border-collapse: collapse;
@@ -46,7 +58,8 @@ export const AllAPIsPage = () => {
     }, [])
 
     return (
-        <div>
+        <Container>
+            {loading ? <Loading>Loading...</Loading> : 
             <StyledTable>
                 <thead>
                     <TableRow>
@@ -58,7 +71,7 @@ export const AllAPIsPage = () => {
                     </TableRow>
                 </thead>
                 <tbody>
-                    {loading ? 'Loading...' :
+                    {!loading &&
                     allAPIs.map((data, index) => {
                     return (
                         <TableRow key={index}>
@@ -72,6 +85,7 @@ export const AllAPIsPage = () => {
                     })}
                 </tbody>
             </StyledTable>
-        </div>
+            }
+        </Container>
     )
 }
