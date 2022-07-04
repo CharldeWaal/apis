@@ -19,7 +19,7 @@ const Container = styled.section`
     border-radius: 5px;
     box-shadow: 1px 0.5px 5px #888888;
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
         height: 240px;
         width: 320px;
     }
@@ -52,7 +52,7 @@ const Title = styled.h1`
     margin-right: 0px;
     margin-bottom: 4px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
         font-size: 14px;
     }
 `;
@@ -69,7 +69,7 @@ const StyledDate = styled.h1`
     margin-right: 0px;
     margin-bottom: 4px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
         font-size: 14px;
     }
 `;
@@ -85,7 +85,7 @@ const APITitle = styled.h2`
     margin-right: 0px;
     margin-bottom: 4px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
         font-size: 18px;
     }
 `;
@@ -103,7 +103,7 @@ const APIDescription = styled.h2`
     margin-right: 0px;
     margin-bottom: 4px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
         font-size: 14px;
     }
 `;
