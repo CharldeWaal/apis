@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import styled from 'styled-components';
 import { useParams } from "react-router-dom";
+import { Error } from "../Error/Error";
 
 //import redux selectors, dispatch
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAPICategory, isLoading, selectSortedAPIs } from "../../features/apiSlice";
+import { fetchAPICategory, isLoading, selectSortedAPIs, isError, resetError } from "../../features/apiSlice";
 
 const Container = styled.section`
     display: flex;
@@ -63,6 +64,18 @@ export const Category = () => {
     const dispatch = useDispatch();
     const allAPIs = useSelector(selectSortedAPIs);
     const loading = useSelector(isLoading);
+    const error = useSelector(isError);
+
+    const handleClick = () => {
+        dispatch(resetError());
+
+        let result = '';
+        result = category;
+        if(result.includes(' ')){
+            result = result.substring(0, result.indexOf(' '));
+        }
+        dispatch(fetchAPICategory(result));
+    }
 
     useEffect(() => {
         let result = '';
@@ -72,6 +85,10 @@ export const Category = () => {
         }
         dispatch(fetchAPICategory(result));
     }, [])
+
+    if(error) {
+        return <Error handleClick={handleClick} />
+    }
 
     return (
         <Container>
