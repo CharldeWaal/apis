@@ -34,12 +34,17 @@ const initialState = {
     dailyApi: [],
     isLoading: false,
     dailyfetched: false,
+    error: false,
 };
 
 export const apiSlice = createSlice({
     name: 'api',
     initialState,
-    reducers: {},
+    reducers: {
+        resetError: (state) => {
+            state.error = false;
+        },
+    },
     extraReducers: {
         [fetchAll.pending]: (state) => {
             state.isLoading = true;
@@ -47,6 +52,10 @@ export const apiSlice = createSlice({
         [fetchAll.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.allApis = action.payload;
+        },
+        [fetchAll.rejected]: (state) => {
+            state.error = true;
+            state.isLoading = false;
         },
         [fetchAPICategory.pending]: (state) => {
             state.isLoading = true;
@@ -80,6 +89,8 @@ export const apiSlice = createSlice({
     }
 });
 
+export const { resetError } = apiSlice.actions;
+
 export const selectAllAPIs = (state) => state.api.allApis;
 export const selectSortedAPIs = (state) => state.api.sortedAPIs;
 export const selectRandomApi = (state) => state.api.randomApi;
@@ -87,4 +98,5 @@ export const selectDailyApi = (state) => state.api.dailyApi;
 export const selectCategories = (state) => state.api.categories;
 export const isDailyFetched = (state) => state.api.dailyfetched;
 export const isLoading = (state) => state.api.isLoading;
+export const isError = (state) => state.api.error;
 export default apiSlice.reducer; 
