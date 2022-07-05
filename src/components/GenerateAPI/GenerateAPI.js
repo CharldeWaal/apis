@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { selectRandomApi, fetchRandom, isLoading } from "../../features/apiSlice";
+import { selectRandomApi, fetchRandom, isLoading, isError, resetError } from "../../features/apiSlice";
 import { useDispatch } from 'react-redux';
+
+import { Error } from '../Error/Error';
 
 const Container = styled.section`
     display: flex;
@@ -127,14 +129,31 @@ export const GenerateAPI = () => {
     const dispatch = useDispatch();
     const api = useSelector(selectRandomApi);
     const loading = useSelector(isLoading);
+    const error = useSelector(isError);
 
     const handleClick = () => {
         dispatch(fetchRandom());
     };
 
+    const handleErrorClick = () => {
+        dispatch(resetError());
+        dispatch(fetchRandom());
+    }
+
     useEffect(() => {
         dispatch(fetchRandom());
     }, []);
+
+    if(error) {
+        return (
+            <Container>
+                <TextContainer>
+                <Title>Generate Random API</Title>
+            </TextContainer>
+                <Error handleClick={handleErrorClick} />
+            </Container>
+        )
+    }
 
     return (
         <Container>
