@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchRandomAPI, fetchAPICategories, fetchAllAPIs } from "../utils/utils";
+import { fetchRandomAPI, fetchAPICategories, fetchAllAPIs, fetchCategory } from "../utils/utils";
 
 export const fetchRandom = createAsyncThunk('api/fetchRandom', async () => {
     const res = await fetchRandomAPI();
@@ -21,8 +21,14 @@ export const fetchAll = createAsyncThunk('api/fetchAll', async () => {
     return res.entries;
 });
 
+export const fetchAPICategory = createAsyncThunk('api/fetchAPICategory', async (category) => {
+    const res = await fetchCategory(category);
+    return res.entries;
+});
+
 const initialState = {
     allApis: [],
+    sortedAPIs: [],
     categories: [],
     randomApi: [],
     dailyApi: [],
@@ -41,6 +47,13 @@ export const apiSlice = createSlice({
         [fetchAll.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.allApis = action.payload;
+        },
+        [fetchAPICategory.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchAPICategory.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.sortedAPIs = action.payload;
         },
         [fetchCategories.pending]: (state) => {
             state.isLoading = true;
@@ -68,6 +81,7 @@ export const apiSlice = createSlice({
 });
 
 export const selectAllAPIs = (state) => state.api.allApis;
+export const selectSortedAPIs = (state) => state.api.sortedAPIs;
 export const selectRandomApi = (state) => state.api.randomApi;
 export const selectDailyApi = (state) => state.api.dailyApi;
 export const selectCategories = (state) => state.api.categories;

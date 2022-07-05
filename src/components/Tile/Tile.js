@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const TileElement = styled.div`
     display: flex;
@@ -37,14 +37,26 @@ const Paragraph = styled.p`
 `;
 
 const StyledLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .5;
+    }
 `;
 
 export const Tile = ({ title, description }) => {
+    const { pathname } = useLocation();
+
     return (
         <TileElement>
-            <Header>{title}</Header>
-            <Paragraph>{description}</Paragraph>
+            <StyledLink to={`${pathname}/${title}`}>
+                <Header>{title}</Header>
+                <Paragraph>{description}</Paragraph>
+            </StyledLink>
         </TileElement>
     )
 };
