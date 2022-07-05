@@ -64,12 +64,20 @@ export const apiSlice = createSlice({
             state.isLoading = false;
             state.sortedAPIs = action.payload;
         },
+        [fetchAPICategory.rejected]: (state) => {
+            state.error = true;
+            state.isLoading = false;
+        },
         [fetchCategories.pending]: (state) => {
             state.isLoading = true;
         },
         [fetchCategories.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.categories = action.payload;
+        },
+        [fetchCategories.rejected]: (state) => {
+            state.error = true;
+            state.isLoading = false;
         },
         [fetchRandom.pending]: (state) => {
             state.isLoading = true;
@@ -78,6 +86,10 @@ export const apiSlice = createSlice({
             state.isLoading = false;
             state.randomApi = action.payload;
         },
+        [fetchRandom.rejected]: (state) => {
+            state.error = true;
+            state.isLoading = false;
+        },
         [fetchDaily.pending]: (state) => {
             state.isLoading = true;
         },
@@ -85,7 +97,11 @@ export const apiSlice = createSlice({
             state.isLoading = false;
             state.dailyfetched = true;
             state.dailyApi = action.payload;
-        }
+        },
+        [fetchDaily.rejected]: (state) => {
+            state.error = true;
+            state.isLoading = false;
+        },
     }
 });
 
