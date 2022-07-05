@@ -11,15 +11,17 @@ const CategoryPageContainer = styled.main`
     height: calc(100vh - 70px - 28px);
     width: 100vw;
     overflow-y: scroll;
-`;
 
-const CategoriesFlex = styled.section`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     align-items: flex-start;
     justify-content: center;
     padding-top: 6px;
+`;
+
+const Loading = styled.div`
+    margin: auto;
 `;
 
 export const CategoriesPage = () => {
@@ -33,14 +35,12 @@ export const CategoriesPage = () => {
 
     return (
         <CategoryPageContainer>
-            <CategoriesFlex>
-                {loading ? 'Loading...' :
+                {loading ? <Loading>Loading...</Loading> :
                 categories.map((data, index) => {
                     return (
                         <Tile key={index} title={data}></Tile> 
                     )
                 })}
-            </CategoriesFlex>
         </CategoryPageContainer>
 
     )

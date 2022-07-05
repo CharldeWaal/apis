@@ -13,6 +13,10 @@ const Container = styled.section`
     overflow-x: auto;
     justify-content: flex-start;
     align-items: flex-start;
+
+    @media (min-width: 1520px) {
+        justify-content: center;
+    }
 `;
 
 const Loading = styled.div`
@@ -32,6 +36,8 @@ const TableRow = styled.tr`
 `;
 
 const TableHeader = styled.th`
+    font-family: 'Inter';
+    font-size: 16px;
     padding: 16px;
     border: 1px solid #48434f;
     text-align: left;
