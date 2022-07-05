@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { selectDailyApi, fetchDaily, isLoading, isDailyFetched } from "../../features/apiSlice";
+import { selectDailyApi, fetchDaily, isLoading, isDailyFetched, isError, resetError } from "../../features/apiSlice";
 import { useDispatch } from 'react-redux';
+import { Error } from "../Error/Error";
 
 const Container = styled.section`
     display: flex;
@@ -147,12 +148,26 @@ export const APIOfTheDay = () => {
     const api = useSelector(selectDailyApi);
     const loading = useSelector(isLoading);
     const isFetched = useSelector(isDailyFetched);
+    const error = useSelector(isError);
 
     useEffect(() => {
         if(!isFetched) {
             dispatch(fetchDaily());
         }
     }, []);
+
+    const handleClick = () => {
+        dispatch(resetError());
+        dispatch(fetchDaily());
+    }
+
+    if(error) {
+        return (
+            <Container>
+                <Error handleClick={handleClick}/>
+            </Container>
+        )
+    }
 
     return (
         <Container>
