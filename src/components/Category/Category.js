@@ -69,7 +69,6 @@ export const Category = () => {
         result = category;
         if(result.includes(' ')){
             result = result.substring(0, result.indexOf(' '));
-            console.log(result);
         }
         dispatch(fetchAPICategory(result));
     }, [])
