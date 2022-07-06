@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://apis-simple-app.herokuapp.com"
+  "proxy": "https://api.publicapis.org"
 }
